@@ -1,0 +1,2 @@
+docker run -d -p 9501:9501  --name swoole_dev  hyperf-env
+docker run -v E:/www/old_Project/hyperf-skeleton:/hyperf-skeleton -p 9501:9501 -p 9502:9502 -it --entrypoint /bin/sh hyperf-env

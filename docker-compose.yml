@@ -1,0 +1,44 @@
+version: '3.5'
+
+networks:
+  lee_net:
+    driver: bridge
+
+services:
+  swoole:
+    container_name: lee_swoole
+    build: .
+    image: hyperf-env
+    networks:
+      - lee_net
+    ports:
+    - 9501:9501
+    - 9502:9502
+    volumes:
+    - './:/hyperf-skeleton'
+    entrypoint:
+      '/bin/sh'
+    hostname: lee_lab
+
+  mysql:
+    container_name: xb_mysql
+    image: mysql
+    networks:
+      - lee_net
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - 3306:3306
+
+  redis:
+    container_name: xb_redis
+    image: redis:alpine
+    networks:
+      - lee_net
+    volumes:
+      - './storage/redis:/data'
+    ports:
+      - 6379:6379
+    command: redis-server --appendonly yes
+
+

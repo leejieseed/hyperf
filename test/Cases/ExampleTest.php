@@ -24,4 +24,9 @@ class ExampleTest extends HttpTestCase
         $this->assertTrue(true);
         $this->assertTrue(is_array($this->get('/')));
     }
+
+    public function testGetToken(){
+        $res = $this->get('/index/token');
+        var_dump($res);
+    }
 }
