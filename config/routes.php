@@ -21,5 +21,6 @@ Router::addServer('ws', function () {
 });
 Router::addGroup('/index',function (){
     Router::get('/token','App\Controller\UserController@getToken');
+    Router::get('/cache','App\Controller\UserController@testCache');
 });
 

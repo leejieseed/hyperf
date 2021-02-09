@@ -14,23 +14,6 @@ use Phper666\JWTAuth\JWT;
 
 class UserService
 {
-    /**
-     * FunctionName: getToken
-     * Description:说明
-     * CreateTime:2021/02/07 11:21
-     * UpdateTime:2021/02/07 11:21
-     * Author: leejie
-     * @param $uid
-     * @param $userName
-     * @param JWT $JWT
-     * @throws \Psr\SimpleCache\InvalidArgumentException
-     */
-    public function getToken($uid,$userName){
-        $JWT = new JWT('index');
-        $userData = [
-            'id'=>$uid,
-            'name'=>$userName
-        ];
-        return $JWT->getToken($userName);
-    }
+
+
 }

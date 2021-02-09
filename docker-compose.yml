@@ -10,35 +10,42 @@ services:
     build: .
     image: hyperf-env
     networks:
-      - lee_net
+      lee_net:
+        aliases:
+          - swoole
     ports:
     - 9501:9501
     - 9502:9502
     volumes:
-    - './:/hyperf-skeleton'
-    entrypoint:
-      '/bin/sh'
+    - 'E:/www/old_Project/hyperf-skeleton:/hyperf-skeleton'
     hostname: lee_lab
+    stdin_open: true
+    tty: true
 
   mysql:
-    container_name: xb_mysql
+    container_name: lee_mysql
     image: mysql
     networks:
-      - lee_net
+      lee_net:
+        aliases:
+          - mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
     ports:
       - 3306:3306
 
   redis:
-    container_name: xb_redis
+    container_name: lee_redis
     image: redis:alpine
     networks:
-      - lee_net
+      lee_net:
+        aliases:
+          - redis
     volumes:
       - './storage/redis:/data'
+      - 'E:/www/old_Project/hyperf-skeleton/docker/redis.conf:/etc/redis/redis.conf'
     ports:
       - 6379:6379
-    command: redis-server --appendonly yes
+    command: redis-server /etc/redis/redis.conf --appendonly yes
 
 

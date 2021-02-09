@@ -12,6 +12,7 @@
 namespace App\Controller;
 
 
+use App\Service\CacheService;
 use App\Service\UserService;
 use Phper666\JWTAuth\JWT;
 
@@ -26,5 +27,9 @@ class UserController
     }
     public function login(){
 
+    }
+    public function testCache(CacheService $cache){
+        $cache->set('aaa',123);
+        echo $cache->get('aaa');
     }
 }

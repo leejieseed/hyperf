@@ -11,6 +11,8 @@ declare(strict_types=1);
  */
 namespace App\Controller;
 
+use App\Service\CacheService;
+
 class IndexController extends AbstractController
 {
     public function index()
@@ -23,4 +25,6 @@ class IndexController extends AbstractController
             'message' => "Hello {$user}.",
         ];
     }
+
+
 }
